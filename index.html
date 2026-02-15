@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Договор оферты | SlandShop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1f2e 0%, #0f1219 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(30, 35, 48, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #6e8efb, #a777e3, #6e8efb);
+            background-size: 200% 100%;
+            animation: gradient 3s linear infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        .header {
+            padding: 40px 50px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #b0b0ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+            text-shadow: 0 0 30px rgba(110, 142, 251, 0.3);
+        }
+
+        .header h2 {
+            font-size: 1.4em;
+            color: #a0a0c0;
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+
+        .header .bot-name {
+            display: inline-block;
+            background: rgba(110, 142, 251, 0.15);
+            padding: 8px 25px;
+            border-radius: 50px;
+            border: 1px solid rgba(110, 142, 251, 0.3);
+            color: #8a9eff;
+            font-size: 1.1em;
+            margin-top: 10px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 20px rgba(110, 142, 251, 0.2);
+        }
+
+        .header .bot-name code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 4px 10px;
+            border-radius: 30px;
+            font-size: 1.2em;
+            color: #ffffff;
+            margin-left: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .date {
+            text-align: center;
+            color: #8080a0;
+            font-size: 0.95em;
+            margin-top: 15px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 30px;
+            display: inline-block;
+            padding: 8px 30px;
+        }
+
+        .content {
+            padding: 30px 50px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(110, 142, 251, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(110, 142, 251, 0.2);
+        }
+
+        .section h3 {
+            font-size: 1.6em;
+            color: #ffffff;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid rgba(110, 142, 251, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .section h3::before {
+            content: '◆';
+            color: #6e8efb;
+            font-size: 0.8em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .section h4 {
+            font-size: 1.2em;
+            color: #b0b0ff;
+            margin: 20px 0 10px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+            color: #c0c0e0;
+            font-size: 1.05em;
+        }
+
+        .section ul, .section ol {
+            margin: 15px 0 15px 25px;
+            color: #c0c0e0;
+        }
+
+        .section li {
+            margin-bottom: 10px;
+            position: relative;
+            list-style-type: none;
+            padding-left: 25px;
+        }
+
+        .section li::before {
+            content: '•';
+            color: #6e8efb;
+            font-weight: bold;
+            position: absolute;
+            left: 5px;
+            font-size: 1.2em;
+        }
+
+        .important-box {
+            background: linear-gradient(135deg, rgba(255, 70, 70, 0.1), rgba(255, 100, 100, 0.05));
+            border-left: 4px solid #ff4757;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 71, 87, 0.3);
+        }
+
+        .important-box p {
+            color: #ffaaaa;
+            margin: 0;
+        }
+
+        .important-box strong {
+            color: #ff6b6b;
+        }
+
+        .highlight {
+            background: rgba(110, 142, 251, 0.1);
+            border-left: 4px solid #6e8efb;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 20px 0;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th {
+            background: rgba(110, 142, 251, 0.2);
+            color: #ffffff;
+            font-weight: 600;
+            padding: 15px;
+            text-align: left;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .requisites {
+            background: linear-gradient(135deg, rgba(110, 142, 251, 0.15), rgba(167, 119, 227, 0.15));
+            border: 1px solid rgba(110, 142, 251, 0.3);
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .requisites h4 {
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .contact-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            text-decoration: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin: 15px 0;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px -10px #6e8efb;
+        }
+
+        .contact-link:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 20px 40px -10px #6e8efb;
+            background: linear-gradient(135deg, #7d9aff, #b588ff);
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(110, 142, 251, 0.15);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.9em;
+            color: #8a9eff;
+            border: 1px solid rgba(110, 142, 251, 0.3);
+            margin: 5px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #8080a0;
+            font-size: 0.9em;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .footer .update {
+            color: #6e8efb;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                border-radius: 20px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            table {
+                font-size: 0.9em;
+            }
+            
+            th, td {
+                padding: 10px;
+            }
+        }
+
+        .glow {
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 20px rgba(110, 142, 251, 0.3); }
+            50% { text-shadow: 0 0 40px rgba(110, 142, 251, 0.5); }
+        }
+
+        .terms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .term-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .term-item strong {
+            color: #8a9eff;
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>ДОГОВОР ОФЕРТЫ</h1>
+            <h2>Публичная оферта на продажу виртуальных товаров</h2>
+            <div class="bot-name">
+                Telegram-бот <code>@SlandShop_bot</code>
+            </div>
+            <div class="date">
+                Дата вступления в силу: 16 февраля 2026 года
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h3>1. ТЕРМИНЫ И ОПРЕДЕЛЕНИЯ</h3>
+                <div class="terms-grid">
+                    <div class="term-item">
+                        <strong>Исполнитель</strong>
+                        Администрация Minecraft сервера, осуществляющая продажу виртуальных товаров через Бота SlandShop
+                    </div>
+                    <div class="term-item">
+                        <strong>Заказчик</strong>
+                        Любое дееспособное физическое лицо, использующее Бота для приобретения виртуальных товаров
+                    </div>
+                    <div class="term-item">
+                        <strong>Бот</strong>
+                        Telegram-бот @SlandShop_bot для продажи виртуальных товаров на Minecraft сервере
+                    </div>
+                    <div class="term-item">
+                        <strong>Виртуальные товары</strong>
+                        Цифровые продукты, не имеющие материального выражения и существующие исключительно в Minecraft сервере
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>2. ПРЕДМЕТ ДОГОВОРА</h3>
+                <p>2.1. Исполнитель обязуется предоставить Заказчику доступ к функционалу Бота <strong>@SlandShop_bot</strong> и обеспечить возможность приобретения виртуальных товаров для использования на Minecraft сервере.</p>
+                <p>2.2. Заказчик обязуется оплатить выбранные виртуальные товары в порядке и на условиях, предусмотренных настоящим Договором.</p>
+                <p>2.3. Все товары, представленные в Боте, являются <strong>виртуальными</strong>, не имеют физического воплощения и существуют исключительно в рамках игрового сервера.</p>
+            </div>
+
+            <div class="section">
+                <h3>3. ПОРЯДОК ЗАКЛЮЧЕНИЯ ДОГОВОРА</h3>
+                <p>3.1. Договор считается заключенным с момента совершения Заказчиком конклюдентных действий:</p>
+                <ul>
+                    <li>Регистрации в Боте с помощью команды /start</li>
+                    <li>Подтверждения заказа после выбора товара</li>
+                    <li>Оплаты товара (списания средств с баланса)</li>
+                    <li>Пополнения баланса</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3>4. ВИРТУАЛЬНЫЕ ТОВАРЫ</h3>
+                <p>4.1. Все товары, реализуемые через Бот, являются виртуальными (цифровыми).</p>
+                <p>4.2. Виртуальные товары не имеют материального выражения, не могут быть физически получены, переданы или возвращены.</p>
+                <p>4.3. Заказчик не приобретает право собственности на виртуальные товары, а получает ограниченное право использования в рамках игрового процесса.</p>
+            </div>
+
+            <div class="section">
+                <h3>5. СТОИМОСТЬ И ПОРЯДОК РАСЧЕТОВ</h3>
+                
+                <div class="important-box">
+                    <p><strong>⚠️ ВАЖНО: Средства, зачисленные на баланс, возврату не подлежат!</strong></p>
+                </div>
+
+                <h4>5.1. Цены:</h4>
+                <p>Цены на виртуальные товары указаны в российских рублях и отображаются в момент выбора в Боте.</p>
+
+                <h4>5.2. Оплата:</h4>
+                <p>Оплата производится путем списания средств с внутреннего баланса Заказчика.</p>
+
+                <h4>5.3. Возврат средств:</h4>
+                <p>5.3.1. <strong>Средства, зачисленные на баланс, возврату не подлежат</strong>, за исключением технических ошибок.</p>
+                <p>5.3.2. Возврат осуществляется только на внутренний баланс. Возврат денежных средств на банковские карты не производится.</p>
+                <p>5.3.3. Пожертвования (донаты) возврату не подлежат ни при каких обстоятельствах.</p>
+
+                <table>
+                    <tr>
+                        <th>Действие</th>
+                        <th>Возможность возврата</th>
+                    </tr>
+                    <tr>
+                        <td>Пополнение баланса</td>
+                        <td>❌ НЕ возвращается</td>
+                    </tr>
+                    <tr>
+                        <td>Покупка виртуального товара</td>
+                        <td>❌ НЕ возвращается</td>
+                    </tr>
+                    <tr>
+                        <td>Пожертвование</td>
+                        <td>❌ НЕ возвращается</td>
+                    </tr>
+                    <tr>
+                        <td>Ошибочное списание</td>
+                        <td>✅ Возврат на баланс</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="section">
+                <h3>6. ПРАВА И ОБЯЗАННОСТИ СТОРОН</h3>
+                
+                <h4>Исполнитель обязуется:</h4>
+                <ul>
+                    <li>Обеспечить работоспособность Бота</li>
+                    <li>Предоставить виртуальные товары в соответствии с описанием</li>
+                    <li>Сохранять конфиденциальность данных Заказчика</li>
+                </ul>
+
+                <h4>Заказчик обязуется:</h4>
+                <ul>
+                    <li>Предоставлять достоверную информацию</li>
+                    <li>Соблюдать правила игрового сервера</li>
+                    <li>Не передавать доступ к аккаунту третьим лицам</li>
+                </ul>
+
+                <div class="highlight">
+                    <p><strong>Особые условия:</strong> Заказчик осознает, что виртуальные товары не могут быть обменены на реальные деньги или иные материальные ценности.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>7. ПОЖЕРТВОВАНИЯ (ДОНАТЫ)</h3>
+                <div class="important-box">
+                    <p><strong>❗ ПОЖЕРТВОВАНИЯ ВОЗВРАТУ НЕ ПОДЛЕЖАТ НИ ПРИ КАКИХ ОБСТОЯТЕЛЬСТВАХ</strong></p>
+                </div>
+                <p>7.1. Пожертвования являются добровольными и безвозмездными.</p>
+                <p>7.2. Пожертвования не являются оплатой конкретного товара или услуги.</p>
+            </div>
+
+            <div class="section">
+                <h3>8. ОГРАНИЧЕНИЕ ОТВЕТСТВЕННОСТИ</h3>
+                <p>Исполнитель не несет ответственности за:</p>
+                <ul>
+                    <li>Действия третьих лиц, получивших доступ к аккаунту Заказчика</li>
+                    <li>Сбои в работе Telegram или интернет-соединения</li>
+                    <li>Изменения в правилах игры Minecraft</li>
+                    <li>Блокировку аккаунта Заказчика за нарушение правил</li>
+                    <li>Утрату виртуальных товаров при закрытии сервера</li>
+                </ul>
+            </div>
+
+            <div class="requisites">
+                <h4>📬 КОНТАКТНЫЕ ДАННЫЕ ИСПОЛНИТЕЛЯ</h4>
+                <p>Администрация Minecraft сервера</p>
+                <a href="https://t.me/slav1k123" class="contact-link" target="_blank">📱 @slav1k123</a>
+                <p class="badge">Бот: @SlandShop_bot</p>
+                <p class="badge">Время ответа: оперативно</p>
+                <p style="margin-top: 20px; color: #a0a0c0;">По всем вопросам обращайтесь в Telegram</p>
+            </div>
+
+            <div class="section">
+                <h3>9. АКЦЕПТ ОФЕРТЫ</h3>
+                <div class="highlight">
+                    <p><strong>Я, Заказчик, настоящим подтверждаю:</strong></p>
+                    <ul>
+                        <li>Я ознакомился с условиями Оферты</li>
+                        <li>Я понимаю, что приобретаю виртуальные товары</li>
+                        <li>Я соглашаюсь, что средства на балансе возврату не подлежат</li>
+                        <li>Я принимаю все условия без исключений</li>
+                    </ul>
+                </div>
+                <p style="text-align: center; margin-top: 20px; font-size: 1.2em;">
+                    <strong>Акцептом Оферты считается регистрация в Боте @SlandShop_bot и/или первое пополнение баланса</strong>
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 SlandShop Minecraft Server</p>
+            <p>Договор оферты разработан в соответствии с законодательством РФ</p>
+            <p class="update">Последнее обновление: 16 февраля 2026 г.</p>
+            <p style="margin-top: 15px; font-size: 0.9em;">Для просмотра в боте используйте команду <span class="badge">/offer</span></p>
+        </div>
+    </div>
+</body>
+</html>
